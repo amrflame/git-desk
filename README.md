@@ -8,7 +8,7 @@
 
 Manage repositories, branches, changes, and commits from a standalone desktop app or a native VS Code sidebar.
 
-[Download](#download) · [Quick start](#quick-start) · [VS Code extension](#vs-code-extension) · [Run from source](#run-from-source) · [Build](#build-from-source)
+[Screenshots](#screenshots) · [Download](#download) · [Quick start](#quick-start) · [VS Code extension](#vs-code-extension) · [Run from source](#run-from-source) · [Build](#build-from-source)
 
 </div>
 
@@ -26,6 +26,20 @@ The VS Code extension provides the same core workflow through native sidebar vie
 | Windows desktop | A portable Git GUI on Windows | Git for Windows installed; x64 Windows |
 | VS Code extension | Working with Git inside your editor | VS Code 1.96.0 or newer; Git; built-in Git extension enabled |
 | Python source | Running or customizing the desktop application | Python 3.10 or newer; Tkinter; Git |
+
+## Screenshots
+
+### Desktop application
+
+<p align="center">
+  <img src="Pasted%20image.png" alt="Git Desk desktop application showing branches, file changes, and commit controls" width="1100">
+</p>
+
+### VS Code extension
+
+<p align="center">
+  <img src="Pasted%20image%20%282%29.png" alt="Git Desk VS Code extension showing the Repository, Branches, and Changes views" width="1100">
+</p>
 
 ## Features
 

@@ -1,0 +1,250 @@
+{
+  "name": "git-desk-controller",
+  "displayName": "Git Desk",
+  "description": "A simple Git sidebar: repositories, branches, staging, commits and sync.",
+  "version": "0.1.0",
+  "publisher": "amr-metwally",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "SCM Providers"
+  ],
+  "main": "./extension.js",
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false
+    }
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "gitDesk",
+          "title": "Git Desk",
+          "icon": "media/git-desk.svg"
+        }
+      ]
+    },
+    "views": {
+      "gitDesk": [
+        {
+          "id": "gitDesk.repository",
+          "name": "Repository"
+        },
+        {
+          "id": "gitDesk.branches",
+          "name": "Branches"
+        },
+        {
+          "id": "gitDesk.changes",
+          "name": "Changes"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "gitDesk.openRepository",
+        "title": "Open Repository\u2026",
+        "category": "Git Desk",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "gitDesk.selectRepository",
+        "title": "Select Repository\u2026",
+        "category": "Git Desk",
+        "icon": "$(repo)"
+      },
+      {
+        "command": "gitDesk.refresh",
+        "title": "Refresh",
+        "category": "Git Desk",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "gitDesk.fetch",
+        "title": "Fetch All",
+        "category": "Git Desk",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "gitDesk.pull",
+        "title": "Pull (Fast-forward Only)",
+        "category": "Git Desk",
+        "icon": "$(arrow-down)"
+      },
+      {
+        "command": "gitDesk.push",
+        "title": "Push",
+        "category": "Git Desk",
+        "icon": "$(arrow-up)"
+      },
+      {
+        "command": "gitDesk.stage",
+        "title": "Stage Selected (Add)",
+        "category": "Git Desk",
+        "icon": "$(add)"
+      },
+      {
+        "command": "gitDesk.stageAll",
+        "title": "Stage All (Add All)",
+        "category": "Git Desk",
+        "icon": "$(add)"
+      },
+      {
+        "command": "gitDesk.unstage",
+        "title": "Unstage Selected",
+        "category": "Git Desk",
+        "icon": "$(remove)"
+      },
+      {
+        "command": "gitDesk.unstageAll",
+        "title": "Unstage All",
+        "category": "Git Desk",
+        "icon": "$(remove)"
+      },
+      {
+        "command": "gitDesk.commit",
+        "title": "Commit Staged\u2026",
+        "category": "Git Desk",
+        "icon": "$(check)"
+      },
+      {
+        "command": "gitDesk.switchBranch",
+        "title": "Switch Branch\u2026",
+        "category": "Git Desk",
+        "icon": "$(git-branch)"
+      },
+      {
+        "command": "gitDesk.newBranch",
+        "title": "Create Branch\u2026",
+        "category": "Git Desk",
+        "icon": "$(plus)"
+      },
+      {
+        "command": "gitDesk.preview",
+        "title": "Preview Changes",
+        "category": "Git Desk",
+        "icon": "$(diff)"
+      },
+      {
+        "command": "gitDesk.showOutput",
+        "title": "Show Activity",
+        "category": "Git Desk",
+        "icon": "$(output)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "gitDesk.openRepository",
+          "when": "view == gitDesk.repository",
+          "group": "navigation@1"
+        },
+        {
+          "command": "gitDesk.selectRepository",
+          "when": "view == gitDesk.repository",
+          "group": "navigation@2"
+        },
+        {
+          "command": "gitDesk.refresh",
+          "when": "view == gitDesk.repository",
+          "group": "navigation@3"
+        },
+        {
+          "command": "gitDesk.fetch",
+          "when": "view == gitDesk.repository",
+          "group": "sync@1"
+        },
+        {
+          "command": "gitDesk.pull",
+          "when": "view == gitDesk.repository",
+          "group": "sync@2"
+        },
+        {
+          "command": "gitDesk.push",
+          "when": "view == gitDesk.repository",
+          "group": "sync@3"
+        },
+        {
+          "command": "gitDesk.showOutput",
+          "when": "view == gitDesk.repository",
+          "group": "activity"
+        },
+        {
+          "command": "gitDesk.newBranch",
+          "when": "view == gitDesk.branches",
+          "group": "navigation@1"
+        },
+        {
+          "command": "gitDesk.switchBranch",
+          "when": "view == gitDesk.branches",
+          "group": "navigation@2"
+        },
+        {
+          "command": "gitDesk.stageAll",
+          "when": "view == gitDesk.changes",
+          "group": "navigation@1"
+        },
+        {
+          "command": "gitDesk.commit",
+          "when": "view == gitDesk.changes",
+          "group": "navigation@2"
+        },
+        {
+          "command": "gitDesk.unstageAll",
+          "when": "view == gitDesk.changes",
+          "group": "staging@1"
+        },
+        {
+          "command": "gitDesk.stage",
+          "when": "view == gitDesk.changes",
+          "group": "staging@2"
+        },
+        {
+          "command": "gitDesk.unstage",
+          "when": "view == gitDesk.changes",
+          "group": "staging@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "gitDesk.stage",
+          "when": "view == gitDesk.changes && viewItem == unstaged",
+          "group": "inline@1"
+        },
+        {
+          "command": "gitDesk.unstage",
+          "when": "view == gitDesk.changes && viewItem == staged",
+          "group": "inline@1"
+        },
+        {
+          "command": "gitDesk.preview",
+          "when": "view == gitDesk.changes && viewItem =~ /^(staged|unstaged)$/",
+          "group": "changes@1"
+        },
+        {
+          "command": "gitDesk.switchBranch",
+          "when": "view == gitDesk.branches && viewItem == branch",
+          "group": "inline@1"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "gitDesk.repository",
+        "contents": "Choose a Git repository to get started.\n[Open Repository](command:gitDesk.openRepository)\n[Select an Open Repository](command:gitDesk.selectRepository)"
+      }
+    ]
+  },
+  "license": "MIT",
+  "extensionKind": [
+    "workspace"
+  ]
+}
